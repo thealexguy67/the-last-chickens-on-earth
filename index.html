@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Last Chickens on Earth</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="game-container">
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="hud">
+    <div class="hud-item"><span>Round</span> <span id="round-num">0</span><span class="hud-label" id="round-max">/ 50</span></div>
+    <div class="hud-item"><span style="color:#e74c3c">&#10084;</span> <span id="lives-num">20</span></div>
+    <div class="hud-item"><span style="color:#FFD700">&#127806;</span> <span id="currency-num">100</span></div>
+    <div class="hud-item"><span class="hud-label" id="wave-status">Ready</span></div>
+    <div id="speed-controls">
+      <button class="speed-btn active" id="speed-1x" onclick="setSpeed(1)">1x</button>
+      <button class="speed-btn" id="speed-2x" onclick="setSpeed(2)">2x</button>
+    </div>
+  </div>
+
+  <div id="chicken-panel">
+    <h3>Defenders</h3>
+    <div id="chicken-buttons"></div>
+  </div>
+
+  <button id="start-wave-btn" onclick="startWave()">Start Wave</button>
+
+  <!-- Upgrade/Sell Popup -->
+  <div id="chicken-popup" style="display:none;">
+    <div class="popup-header">
+      <span id="popup-emoji"></span>
+      <span id="popup-name"></span>
+      <span id="popup-level"></span>
+    </div>
+    <div id="popup-stats"></div>
+    <div class="popup-buttons">
+      <button id="popup-upgrade-btn" onclick="upgradeSelectedChicken()">Upgrade</button>
+      <button id="popup-sell-btn" onclick="sellSelectedChicken()">Sell</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="menu-overlay">
+    <h1>&#128020; The Last Chickens<br>on Earth &#129503;</h1>
+    <p class="subtitle">The world has fallen. The undead roam free. Only a handful of brave chickens remain to defend the last farm. Place your feathered warriors and hold the line!</p>
+    <button class="menu-btn" onclick="startNewGame()">New Game</button>
+  </div>
+
+  <div class="overlay" id="victory-overlay">
+    <h1>&#127942; Victory! &#127942;</h1>
+    <p>You defended the farm through 50 rounds!</p>
+    <button class="menu-btn green" onclick="enterFreePlay()">Free Play (Endless)</button>
+    <button class="menu-btn" onclick="goToMenu()">Main Menu</button>
+  </div>
+
+  <div class="overlay" id="gameover-overlay">
+    <h1>&#128128; The Chickens Have Fallen...</h1>
+    <p class="round-info">You survived <span id="final-round">0</span> rounds</p>
+    <button class="menu-btn" onclick="goToMenu()">Main Menu</button>
+  </div>
+</div>
+
+<!-- Scripts loaded in dependency order (each file can use anything defined before it) -->
+<script src="js/constants.js"></script>
+<script src="js/state.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/map.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/waves.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/input.js"></script>
+<script src="js/render.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
