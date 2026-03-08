@@ -27,4 +27,5 @@ const Game = {
   spawnQueue: [],
   spawnTimer: 0,
   spawnInterval: 1,
+  autoStart: false,
 };

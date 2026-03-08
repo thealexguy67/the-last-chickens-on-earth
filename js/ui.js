@@ -59,9 +59,11 @@ function startNewGame() {
   precomputePathPixels();
   generateDecorations();
 
+  Game.autoStart = false;
   document.getElementById('round-max').textContent = '/ 50';
   document.getElementById('speed-1x').classList.add('active');
   document.getElementById('speed-2x').classList.remove('active');
+  document.getElementById('auto-start-btn').classList.remove('active');
 
   buildChickenPanel();
   changeState('PLAYING');
@@ -82,6 +84,11 @@ function setSpeed(s) {
   Game.gameSpeed = s;
   document.getElementById('speed-1x').classList.toggle('active', s === 1);
   document.getElementById('speed-2x').classList.toggle('active', s === 2);
+}
+
+function toggleAutoStart() {
+  Game.autoStart = !Game.autoStart;
+  document.getElementById('auto-start-btn').classList.toggle('active', Game.autoStart);
 }
 
 // ============================================================

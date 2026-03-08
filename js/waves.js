@@ -79,7 +79,15 @@ function onWaveComplete() {
     return;
   }
 
-  document.getElementById('start-wave-btn').style.display = 'block';
   document.getElementById('wave-status').textContent = 'Ready';
   updateHUD();
+
+  if (Game.autoStart) {
+    // Short pause so the player can see the bonus, then auto-launch
+    setTimeout(() => {
+      if (Game.betweenWaves && Game.currentState === 'PLAYING') startWave();
+    }, 1500);
+  } else {
+    document.getElementById('start-wave-btn').style.display = 'block';
+  }
 }
